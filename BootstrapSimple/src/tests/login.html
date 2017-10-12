@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Login</title>
+        <style>
+            .header
+            {
+                width: 50%;
+                height: 20%;  
+                background-color:rgba(51, 102, 255, 1);
+                margin: 0 auto;/*上下边距 左右边距 */
+            }
+            .header h2{
+                text-align: center;
+            }
+
+            /* container start */
+            .container{
+                width: 45%;
+                height:180px;
+                /* border: 3px solid chartreuse; */
+                padding: 25px;
+                margin:30px auto;
+            }
+            .container .input{
+                width:90%;
+                height:25px;
+            }
+
+            .container .iocn{
+                margin-right: 1%;
+            }
+
+            .container .login{
+                width: 100%;
+                height:30px;
+                border-radius:10px;
+                background-color: cornflowerblue;
+            }
+            /* container end */
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="header">
+                <h2>后台登陆</h2>
+            </div>
+            <div class="container">
+                <div>
+                    <img class="iocn" src="../../img/person.svg" height="18" width="18" />
+                    <input class="input" type="text" placeholder="请输入账号" />
+                    <br>
+                    <img class="iocn" src="../../img/password.svg" height="18" width="18" />
+                    <input class="input" type="password" placeholder="请输入账号" />
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" />
+                        <label>记住密码</label>
+                    </label>
+                </div>
+                <div >
+                    <button class="login">立即登陆</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

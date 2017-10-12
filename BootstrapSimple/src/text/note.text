@@ -1,0 +1,22 @@
+ <!--SVG图像嵌入到HTML-->
+                <!--
+                     http://www.w3cplus.com/html5/svg-introduction-and-embedded-html-page.html
+                    1.使用<iframe>元素来嵌入SVG图像  
+                        <iframe src="xxx.svg" width="200" height="200" ></iframe>
+                    2.使用<img>元素来嵌入SVG图像
+                        <img src="xxx.svg" width="300" />
+                    3.将SVG图像作为背景图像嵌入
+                        div { background: url('xxx.svg') no-repeat center; background-size : 200px 200px; }
+                     4.直接使用<svg>元素
+                
+                    5.使用<embed>元素来嵌入SVG图像
+                        <embed src="xxx.svg" width="300" height="220" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+                    6.使用<object>元素来嵌入SVG图像
+                                -->
+                <!-- <object type="images/svg+xml" data="../../img/person.svg" height="18" width="18"></object><input type="text" placeholder="请输入账号"/>
+                                <object type="images/svg+xml" data="../../img/password.svg" height="18" width="18"></object><input type="password" placeholder="请输入密码"/> -->
+                <img src="../../img/person.svg" height="18" width="18" />
+                <input type="text" placeholder="请输入账号" />
+                <br>
+                <img src="../../img/password.svg" height="18" width="18" />
+                <input type="password" placeholder="请输入账号" />
