@@ -1,40 +1,77 @@
-.header
-{
-    width: 50%;
-    height: 20%;  
-    background-color:rgba(51, 102, 255, 1);
-    margin: 0 auto;/*上下边距 左右边距 */
+*{padding:0px;margin:0px;}
+body{font-size:14px;font-family:"微软雅黑";}
+#parent{
+    width:100%;
+    height:100%;
+    position: absolute;
+    background-color:rgba(102, 204, 204, 1);
+    z-index: -1;
 }
-.header h2{
-    text-align: center;
-    line-height: 100%;  
+#parent #wrap{
+    top:50%;
+    left:50%;
+    margin-top:-160px;
+    margin-left: -150px;
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    height: 300px;
+    background-color: gold;
+    display: block;
+}
+
+#parent #wrap .header{
+    width: 100%;
+    height: 80px;  
+    background-color:rgba(51, 102, 255, 1);
+    line-height: 80px;
+    text-align: center;   
+    color:white;
+    overflow:hidden;  
+}
+#parent #wrap .container{
+    width: 100%;
+    height:220px;  
+    background-color:rgba(255, 255, 255, 1);
+}
+#parent #wrap .container .form{
+    padding:10px 40px;
+}
+
+.container .form .input{
+    height:18px;
+    /* 段落缩进 */
+    text-indent:1em;
+    border-style: none;
+    /*chrome浏览器  点击input输入时，去掉边框 */
+    outline:medium;
+}
+.container .form .iocn{
+   width:18px;
+   height: 18px;
+}
+
+.container .form .line-row{
+    width:100%;
+    height: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+ }
+
+.container .row{
+    padding:0px 40px;
+}
+.container .btn{
+    margin-top:25px;
+}
+.container .login{
+    width: 60%;
+    height:36px;
+    margin: 0 auto;
+    border-radius:18px;
+    background-color: #169bd5;
+    border: none;
+    outline:medium;
+    display: block;
     color:white;
 }
-
-/* container start */
-.container{
-    width: 45%;
-    height:180px;
-    /* border: 3px solid chartreuse; */
-    padding: 25px;
-    margin:30px auto;
-}
-.container .input{
-    width:90%;
-    height:20px;
-    /* 段落缩进 */
-    text-indent:0.7em;
-    margin-bottom: 5px;
-}
-
-.container .iocn{
-    margin-right: 1%;
-}
-
-.container .login{
-    width: 100%;
-    height:30px;
-    border-radius:10px;
-    background-color: cornflowerblue;
-}
-/* container end */
