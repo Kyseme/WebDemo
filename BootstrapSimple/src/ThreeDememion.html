@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <title>css 3d转换</title>
+        <style>
+            *{padding:0;margin: 0;}
+            body{
+                font-size: 14px;font-family: "微软雅黑";
+                background: url("../img/bg.jpg") no-repeat ;
+                background-size: cover;
+                /* background-size: 100% 100%; */
+                /* overflow: hidden; */
+            }
+            a{text-decoration: none;}
+            ul li{list-style: none;}
+
+            .wrap{
+                width:800px;margin: 50px auto;
+                /* background: red; */
+            }
+            .container{
+                float:left;
+                width:120px;height: 150px;
+                /* 600-1200 */
+                -webkit-perspective: 700;
+                perspective: 700;
+                /* overflow: hidden; */
+                position: relative;
+                margin-right: 20px;
+                margin-bottom: 20px;
+                padding:20px 0px 0px 20px;
+                
+            }
+
+            /* film*/
+            .container .film{
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                transition: transform 0.6s ease;
+                height:150px;width:120px;
+                
+            }
+            .container:hover .film{
+                 -webkit-transform: rotateY(180deg) scale(1.2);
+                 transform: rotateY(180deg) scale(1.2);
+                 /* box-shadow: -3px -3px 6px 6px pink; */
+            }
+            .container:hover .back{
+                top:0px;
+            }
+            .container .face {
+                position: absolute;
+                top:0;left:0;
+                right:0;bottom: 0;
+                /* width:100%;height: 100%; */
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                border-radius: 10%; 
+                transition: top 0.6s cubic-bezier(0.14, 0.49, 0.38, 0.76);               
+            }
+            .container .back{
+                top:150px;
+                -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+                background:linear-gradient(to top,rgba(99, 17, 17, 0.3),rgba(99, 17, 17, 1));
+                padding:20px;
+                color:#fff;
+                border:none;
+                overflow: hidden;
+            }
+ 
+            img{
+                height:150px;width: 120px;
+                border-radius: 10%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="container"><!--景深-->
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/01.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/02.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/03.png" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/04.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container"><!--景深-->
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/05.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/06.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/09.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="film"><!--环境--> 
+                    <div class="face front"><!--运动的物体 transform:2d-->
+                        <img src="../img/08.jpg" > 
+                    </div> 
+                    <div class="face back">
+                        hhhhh
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

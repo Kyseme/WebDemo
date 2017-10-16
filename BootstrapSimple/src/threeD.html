@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <title>css 3d转换</title>
+        <style>
+            *{padding:0px;margin: 0px;}
+            body{font-size: 14px;font-family: "微软雅黑";
+                background: url("../img/bg.jpg") no-repeat ;
+                /* background-size: cover; */
+            }
+            a{text-decoration: none;}
+            ul li{list-style: none;}
+
+            .wrap{width:800px;height:540px;margin: 0 auto;
+                padding:0px 0px 20px 20px;background: red;
+            }
+             /* 2d 平面 1turn=360deg */
+            /*
+               CSS3S--- transform:
+                scale(2) 等价于scaleX(2)和scaleY(2)
+                rotate(deg/turn) rotateX()和rotateY()
+                skew(deg/turn) skewX()heskewY()
+                translate translateX()和translateY()
+                matrix
+            */  
+            /* .container:hover{
+                transform: scaleX(1.5) rotate(360deg) skew(30deg,20deg);
+            } */
+            .container{
+                width:180px;height: 160px;background: rgb(7, 230, 230);
+                float: left;
+                /* line-height: 300px;font-size: 16px;font-weight: 700;
+                text-align: center; color:#fff;*/
+               margin-right: 20px; margin-top: 20px;
+               transition: 0.6s ease;
+               overflow: hidden;position: relative;
+            }
+            img{
+                height:160px;width: 180px;
+            }
+            .pa{
+                position: absolute;
+                top:0px;left: 0px;
+                width:100%;
+                height: 100%;
+            }
+            .container .txt{
+                padding:10px;
+                transition: top 0.6s cubic-bezier(0.14, 0.49, 0.38, 0.76);
+                color:#fff;
+                left:0px;
+            }
+            .container:nth-child(2n) .txt{
+                background:linear-gradient(to top,rgba(99, 17, 17, 0),rgba(99, 17, 17, 1));
+                top:160px;
+            }
+            .container:nth-child(2n+1) .txt{
+                background:linear-gradient(to bottom,rgba(5, 103, 121,1),rgba(99, 17, 17, 0));
+                top:-170px;
+            }
+            /* .container:hover{
+                background: #111;color:#fff;transition: 1s ease;
+            } */
+            .container:hover .txt{
+                top:0px;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="container">
+                <div class="film pa">  
+                    <img src="../img/01.jpg" > 
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                 <div class="film pa">  
+                     <img src="../img/02.jpg" >
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film pa">
+                    <img src="../img/03.png" >
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film pa">
+                    <img src="../img/04.jpg" >
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+           <!-- <div class="container">
+                <div class="film">
+                    <img src="../img/05.jpg">
+                </div>
+                <p class="txt">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film">
+                    <img src="../img/06.jpg" >
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film">
+                    <img src="../img/07.jpg">
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film">
+                    <img src="../img/08.jpg">
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div>
+            <div class="container">
+                <div class="film">
+                    <img src="../img/09.jpg">
+                </div>
+                <p class="txt pa">大家好会好好会好好</p>
+            </div> -->
+        </div>
+    </body>
+
+</html>
