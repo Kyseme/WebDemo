@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>banner</title>
+        <style>
+            *{padding:0;margin: 0;}
+            ul li{list-style: none;}
+            #banner{
+                height:280px;width:520px;
+                margin: 100px auto;
+                position: relative;
+                overflow: hidden;
+            }
+            #banner .pic ul{
+                width: 3120px;
+                position: absolute;
+            }
+            #banner .pic ul li{
+                float: left;
+            }
+
+            #banner .tab ul{
+                width:65px;
+                height:13px;
+                background-color:  rgba(255,255,255,0.3);
+                position: absolute;
+                bottom: 20px;
+                border-radius: 6.5px;
+                /* 水平居中*/
+                left:50%;
+                margin-left:-32.5px;
+                display: inline-block;
+
+            }
+            #banner .tab ul li{
+                width:9px; height: 9px;
+                border-radius: 50%;
+                background: #B7B7B7;
+                float: left;
+                margin: 2px;
+                cursor: pointer;
+            }
+            #banner .tab ul .on{
+                background: #f60;
+            }
+            #banner .btn div{
+                height:36px;
+                width:24px;
+                background: rgba(0,0,0,0.3);
+                top:50%;
+                margin-top:-18px;
+                cursor: pointer;
+            }
+            #banner .btn{
+               height:36px;
+               width: 100%;
+               position: absolute;
+               top:50%;
+               margin-top: -18px;
+               display: none;
+            }
+            #banner:hover .btn{
+                display: block;
+            }
+            .pa{
+                color:white;
+                line-height: 36px;
+                font-size: 32px;
+                text-align: center; 
+            }
+            #banner .btn #leftBtn{
+                float:left;
+            }
+            #banner .btn #rightBtn{
+                float:right;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="banner">
+            <div class="pic">
+                <ul>
+                    <li><img src="img/01.webp"></li>
+                    <li><img src="img/02.jpg"></li>
+                    <li><img src="img/03.webp"> </li>
+                    <li><img src="img/04.jpg"></li>
+                    <li><img src="img/05.webp"> </li>
+                    <li><img src="img/01.webp"></li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li class="on"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="btn">
+                <div id="leftBtn" class="pa"> 
+                    &lt;
+                </div>
+                <div id="rightBtn" class="pa">
+                    &gt;
+                </div>
+            </div>
+        </div>
+        <script src="../../js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(function(){
+               var timer=null;
+               var $tabLi=$("#banner .tab ul li");
+               var $picLi=$("#banner .pic ul li");
+               var $picUl=$("#banner .pic ul");
+               var $btn=$("#banner .btn");
+               var $btnLeftt=$("#banner .btn #leftBtn");
+               var $btnRight=$("#banner .btn #rightBtn");
+               var $btnDiv=$("#banner .btn div");
+               var $imgWidth=$picLi.width();
+               var $index=0;
+               $tabLi.click(function(){
+                   /* get the object index */
+                   $index=$(this).index();
+                   /* add the class style and remove the borthers class styles*/
+                    $(this).addClass("on").siblings().removeClass("on");
+                    $picUl.stop().animate({"margin-left":-($index)*($imgWidth)},500);
+               });
+
+               $btnDiv.click(function(){
+                   /* get the btnDiv index index=0 left ,index=1 right */
+                   var i=$(this).index();
+                  /*0--false 1--true*/
+                  if(i){
+                    $index++;
+                  }else{
+                    $index--;
+                  }
+                  var $liIndex=$index;
+                  if($liIndex==$tabLi.length){
+                    $liIndex=0;
+                  }else if($liIndex<0){
+                    $liIndex=$tabLi.length-1;
+                  }
+                  /* when the index change update the borther style*/
+                $tabLi.eq($liIndex).addClass("on").siblings().removeClass("on");
+                $picUl.stop().animate({"margin-left":-($index)*($imgWidth)},500,function(){
+                   /* when the index is -1 or 5*/
+                    if($index==$tabLi.length){
+                        $picUl.css({"margin-left":0});
+                        $index=0;
+                    }else if($index<0){
+                        $picUl.css({"margin-left":-($tabLi.length-1)*($imgWidth)});
+                        $index=$tabLi.length-1;
+                    }
+                });
+               });
+
+               /* when the mouse in or out*/
+               $("#banner").hover(function(){
+                   clearInterval(timer);
+               },function(){
+                timer=setInterval(function(){
+                    $index++;
+                    if($index==$tabLi.length){
+                        $picUl.css({"margin-left":0});
+                        $index=0;
+                    }
+                    $picUl.stop().animate({"margin-left":-($index)*($imgWidth)},500);
+                    if($index==$tabLi.length-1){
+                        $tabLi.eq(0).addClass("on").siblings().removeClass("on");
+                    }
+                    else{
+                        $tabLi.eq($index).addClass("on").siblings().removeClass("on");
+                    } 
+                },1000)
+               });
+            });
+        </script>
+    </body>
+</html>
