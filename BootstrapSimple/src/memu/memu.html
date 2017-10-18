@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <title>memu</title>
+        <script src="../../js/jquery-3.2.1.min.js"></script>
+        <style>
+            *{padding:0px;margin: 0px;}
+            /* body{
+                background: radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
+radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
+linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
+linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
+                background-color: slategray;
+                background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+            } */
+            html,body{
+                height: 100%;
+            }
+            body{
+                overflow: hidden;
+            }
+            #wrap{
+                position: absolute;
+                top:5%;left:5%;
+                width:90%;
+                height:90%;
+                /* border:3px solid lightpink; */
+                box-shadow: 0 0 10em lightpink;
+            }
+            #wrap ul li{
+                list-style: none;
+                height: 220px;
+                width:220px;
+                box-shadow:0 0 1px #000; 
+                position: absolute;
+                transition: left 1s,top 1s,transform 1s;
+                /* background: url("img/big/1.jpg"); */
+            }
+            #wrap ul li img{
+                transition: transform 1s ease-in;
+                transform: scale(0.95);
+            }
+            /* #wrap div{
+                position: absolute;
+                cursor: pointer;
+                height: 30px;
+                width:100%;
+                top:50%;
+                margin-top:-15px;
+                visibility: hidden;
+            } */
+            #wrap div input{
+                position: fixed;
+                cursor: pointer;
+                top:50%;
+                display: none;
+            } 
+            #wrap div #left{
+                left:2.5%;
+            }
+            #wrap div #right{
+                right:2.5%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul></ul>
+            <div>
+                <input type="button" id="left" value="<"/>
+                <input type="button" id="right" value=">"/>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                var $ul=$("#wrap ul")
+                var $wrap=$("#wrap");
+                init();
+                var $li=$("#wrap ul li");
+                var $img=$("#wrap ul li img");
+                var $btn=$("#wrap div input");
+                var onOff=true;
+                var index=0;
+                var btnTime=0;
+                function init() {
+                     for (let i = 0; i < 10; i++) {
+                        var $li = $("<li><img src='img/small/"+(i+1)+".jpg'></li>");
+                        $ul.append($li);//js appendChild()
+                     }
+                 }
+                liPosition();
+                liRotate();
+
+                //li positon
+                function liPosition(){
+                    var wrapWidth=$wrap.width();
+                    var wraHeight=$wrap.height();
+                    //the margin of width
+                    var w=(wrapWidth-220*5)/4;
+                    //the margin of height
+                    var h=(wraHeight-220*2); 
+                    $li.each(function(i){
+                        var iX=i%5;//1 2 3 4 5 6
+                        var iY=parseInt(i/5);//1,2
+                        $(this).css({
+                            left:220*iX+w*iX,
+                            top:220*iY+h*iY,
+                            backgroundPosition:-iX*220+"px "+(-iY*220) +"px"
+                            });
+                    })              
+                }
+
+                //when the windows change 适应性
+                $(window).resize(liPosition);
+               
+                //li rorate 
+                function liRotate(){
+                    //[0,1)(-30,30)）
+                    $li.each(function(i){
+                    var r= (Math.random()-0.5)*60;
+                    // $(this).css("transform","rotate("+r+"deg)");
+                    $(this).css({"transform":"rotate("+r+"deg)"});
+                    });
+                }
+
+                //li click 
+                 $li.click(function () {
+                    if (onOff) {
+                        index = $(this).index();
+                        $img.css("transform", "scale(1)");
+                        setTimeout(function () {
+                             liClick();
+                             $img.fadeOut(1000);
+                            $li.css("background-image", "url(img/big/" + (index + 1) + ".jpg)")
+                            // $li.css("background-repeat", "no-repeat");
+                        }, 1000);
+                        //解绑Position resize
+                        $(window).off("resize");
+                        $(window).resize(liClick);
+                        $btn.show();
+                        onOff=false;
+                    }else{
+                        $img.fadeIn(1000,function(){
+                            $li.css("background-image","");
+                            $img.css("transform","scale(0.95)");
+                        })
+                        liPosition();
+                        liRotate();
+                        //解绑liClick函数
+                        // $(window).off("resize");
+                        // $(window).resize(liPosition);
+                        $(window).off("resize").resize(liPosition);
+                        $btn.hide();
+                        onOff=true;
+                    }
+
+                });
+                //li click img small or lagre
+                function liClick(){
+                    var wrapWidth=$wrap.width();
+                    var wraHeight=$wrap.height();
+                    var x=(wrapWidth-220*5)/2;
+                    var y=(wraHeight-220*2)/2;
+                    $li.each(function(i){
+                        var cX=i%5;//1,2,3,4,5
+                        var cY=parseInt(i/5);//1,2
+                        $(this).css({
+                            left:x+cX*220+"px",
+                            top:y+cY*220,
+                            transform:"rotate(0deg)"
+                        });
+                    });
+                };
+
+                //click btn
+                $btn.click(function(){
+                    if(new Date() - btnTime> 600){
+                        var i=$(this).index();
+                        btnTime=new Date();
+                        // console.log(i);
+                        if(i){
+                            index++;
+                            index=index%($li.length);
+                            // index%=$li.length;
+                        }else{
+                            index--;
+                            if(index<0){
+                                index=$li.length-1;
+                            }
+                        }
+                        // $li.css("background-image", "url(img/big/" + (index + 1) + ".jpg)")
+                        liBackground();
+                    }
+                   
+                });
+
+                //li background anmiante 
+                function liBackground(){
+                    var arr=[];
+                    for(let i=0;i<10;i++){
+                        arr.push(i);//arr[i]=i;
+                    };
+                    
+                    var timer=setInterval(function(){
+                        // alert($li.length)
+                        var r=Math.floor(Math.random()*(arr.length));//[0,10)
+                        $li.eq(arr[r]).css("background-image", "url(img/big/" + (index + 1) + ".jpg)");
+                        arr.splice(r,1);
+                       if(arr.length==0){
+                           clearInterval(timer);
+                       }
+                       console.log(r);
+                       console.log(arr);
+                    },50);
+                };
+
+            });
+        </script>
+    </body>
+</html>
