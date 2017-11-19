@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>function</title>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            /*对象作为参数传递*/
+            function obj(a,b){
+                // alert(a.age-b);
+                // alert(arguments.length);
+            }
+            obj({username:"sunine",age:13},3);
+
+
+            //函数作为参数
+            function fn(s){
+                s();
+            }
+            fn(function add(){
+                // alert("add");
+            });
+
+            //函数调用
+            function sum(fn){
+                window.onload=fn;
+            }
+            sum(function(){
+
+            });
+
+            function f1(){
+                var sum=3;
+                return;
+                //函数默认有一个return;
+            }
+            // alert(f1());
+
+            /*函数*/
+            function fn(){
+                var sum=3;//内存
+                return function(){
+                    alert(++sum);
+                    return;
+                }
+            }
+            // alert(fn());
+            //fn() return function(){alert(++sum)}
+           //fn()() 执行function(){alert(++sum)}
+            // fn()();
+
+            //underfined
+            // alert(fn()());//alert function()里面的返回值
+            
+            // function fn1(){
+            //     alert(1);
+            //     return;//return false;
+            //     alert(2);
+            //     alert(3);
+            // }
+            // fn1();
+            console.log(typeof undefined);//underfined
+            //typeof "underfined" typeof返回字符串
+            alert(typeof typeof undefined);//string
+        </script>
+    </body>
+</html>

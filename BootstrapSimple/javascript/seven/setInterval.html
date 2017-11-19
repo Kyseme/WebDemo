@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            var num=0;
+            var time=setInterval(function(){
+                num++;
+                if(num==10){
+                    clearInterval(time);
+                }
+                document.write(num+"<br/>");
+            },1000)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list">
+           hello
+        </div>
+        <span id="num">倒计时5秒钟</span>
+    </body>
+    <script>
+        (function(){
+            var span = document.getElementById("num");
+            var list = document.getElementById("list");
+            span.addEventListener("click",function(){
+                alert("addEventListener 1");
+            },false);
+            span.addEventListener("click",function(){
+                alert("addEventListener 2");
+            }),false;
+
+            list.onclick=function(){
+                alert("onclick 1");
+            };
+            list.onclick=function(){
+                alert("onclick 2");
+            };
+
+        })();
+    </script>
+</html>

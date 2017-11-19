@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>scroll</title>
+        <style>
+            *{padding:0;margin: 0}
+            #box{
+                width: 100px;
+                height: 100px;
+                background: pink;
+                margin:50px auto;
+                padding: 20px;
+                border:2px dashed darkgoldenrod;
+                overflow-y: scroll;
+            }
+            #div1{
+                background: beige;
+                padding:50px;
+                width: 300px;
+                margin:50px auto;
+            }
+            #div2{
+                background:lightcoral;
+                padding:50px;
+                width: 200px;
+                position: relative;
+            }
+            #div3{
+                background: lightgreen;
+                padding:50px;
+                width: 100px;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="box" class="hello">
+            click me!I am box！通过currentStyle就可以获取到通过内联或外部引用的CSS样式的值了（仅限IE）  
+       </div>
+       <div id="div1"> 
+           <div id="div2">
+               <div id="div3"></div>
+           </div>
+       </div>
+    </body>
+    <script>
+        window.onload=function(){
+            /*
+             通过currentStyle就可以获取到通过内联或外部引用的CSS样式的值了（仅限IE） 如：document.getElementById("test").currentStyle.top
+
+             getComputedStyle是chrome和firefox
+            */
+            document.onclick=function(){
+                var box = document.getElementById("box");
+                // alert(box.clientHeight);//140 height+padding
+                // alert(box.offsetHeight);//114 height+padding+border
+                alert(box.clientTop);//2 border
+
+                //height+padding --当有滚动条不同浏览器解析不同，尽量不用
+                alert(box.scrollHeight);
+
+                // alert(box.offsetTop);//50 margin
+                var div3 = document.getElementById("div3");
+                //offsetLeft:父类没有定位 元素到body的距离
+                // alert(div3.offsetTop);//相对于html的距离
+                // alert(div3.offsetTop);//定位则为50
+
+                /*div3 postion:relative   div2 postionn:relative*/
+                // alert(div3.offsetTop);//50
+                // alert(div3.offsetParent.id);//div2
+
+                /* getComputedStyle 获取box样式 */
+                // console.log(window.getComputedStyle(box));
+                // alert(getStyle(box,'width'));
+
+                /* 获取样式的某个属性*/
+                function getStyle(obj, attr) {
+                    return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+
+                }
+
+                /*元素可视高度 clientHeight=height+padding*/
+                // alert(div3.clientHeight);//100
+                //浏览器窗口滚动的时候触发
+                // window.onscroll=function(){
+                //     alert(1);
+                // }
+
+            }
+           
+
+        }
+    </script>
+
+</html>

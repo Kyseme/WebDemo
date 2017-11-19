@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>style</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        .on {
+            height: 200px;
+            width: 200px;
+            border: 3px solid blueviolet;
+            background: #5df7ff;
+        }
+
+        .wrap{
+            color:red;
+        }
+        #list {
+            height: 200px;
+            width: 200px;
+            border: 3px solid blueviolet;
+            background: #5df7ff;
+        }
+    </style>
+</head>
+
+<body>
+<div id="list" class="on wrap">
+   <span class="on"></span> hello
+</div>
+<div  class="box wrap">
+    hello
+</div>
+<div  class="box wrap">
+    hello
+</div>
+
+<script>
+    window.onload = function() {
+        var list = document.getElementById("list");
+//        var hh=list.getElementsByClassName("on");
+//        console.log(hh);
+        // console.log(findClass());
+//         function findClass(){
+//             var html=document.getElementsByTagName("*");
+// //            console.log(html);
+//             var arr=[];
+//             var arr1=[];
+//             var len=html.length;
+//             for(var i=0;i<len;i++){
+//                 arr1=html[i].toString().split("on");
+//                 console.log(arr1);
+//                 if(html[i].className=="on"){
+//                     arr.push(html[i]);
+//                 }
+//             }
+//             return arr;
+//         }
+    }
+    function $(param,obj){
+        var typeParam=typeof param;
+        // var params=param.split(" ");
+        if(typeof param =="function"){
+            window.onload=param;
+        }else if(typeParam.toUpperCase()=="STRING"){
+            if(param.charAt(0)=="#"){
+                // param=param.split("#")[1].trim();
+                param=param.substring(1,param.length);
+                // console.log(param);
+                return document.getElementById(param);
+            }else if(param.charAt(0)=="."){
+                // param=param.split(".")[1].trim();
+                param=param.substring(1,param.length);
+                obj=obj||document;
+                // if(document.getElementsByClassName){
+                //     return document.getElementsByClassName(param);
+                // }
+                var all = obj.getElementsByTagName("*");
+                var arrClass = [];
+                for (var i = 0; i < all.length; i++) {
+                    var arr = all[i].className.split(" ");
+                    for (var j = 0; j < arr.length; j++) {
+                        // console.log(arr[j]);
+                        if (arr[j] == param) {
+                            arrClass.push(all[i]);
+                        }
+                    }
+                }
+            return arrClass;
+            }
+        }
+
+    }
+    // console.log($("#list"));
+    console.log($(".on",$("#list"))); 
+    function getTagName(){
+        //所有浏览器都兼容的 document.getElementsByClassName
+        var all = document.getElementsByTagName("*");
+            var arrClass = [];
+            console.log(all);
+            console.log("----------")
+            for (var i = 0; i < all.length; i++) {
+                var arr = all[i].className.split(" ");
+                console.log(arr);//["box", "", "", "wrap"]
+                for (var j = 0; j < arr.length; j++) {
+                    // console.log(arr[j]);
+                    if (arr[j] == "box") {
+                        arrClass.push(all[i]);
+                    }
+                }
+
+            }
+            return arrClass;
+    }
+   //console.log(getTagName());
+</script>
+</body>
+
+</html>

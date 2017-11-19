@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>homework</title>
+        <style>
+                *{padding:0;margin: 0};
+            </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            var list=document.getElementById("list");
+            var str="潭州学院是一家在线教育公司。学院目前开设以下课程，包括软件教育类、工业类、设计类、电商类、语言类、中小学教育、网络营销等学科，及农业种植、亲子教育、手工DIY、电脑维修、花卉、美甲等各类兴趣爱好学科，教学品类众多，是一家跨品类在线教育公司。学院位于长沙市，拥有西子一间、美联天骄城、星沙富尤工业园三大教学场地。通过潭州学院在线学习平台学习的学员来自国内各省市、港澳台地区及国外地区。潭州学院教学，主要以在线教育学习。以SEO研究中心原有的课程基础，老师的专研文化精神，开启多门课程。通过扎实的技术支持，通过互联网YY教学，远程桌面共享。可以清晰看到老师桌面操作。课后可以语音解答。在其余时间可以在QQ群交流。以及老师QQ在线可以一对一问题解答。";
+            var nums=str.split("潭州");
+            // alert(nums.length);
+            console.log(nums);//4 
+            // alert(str.indexOf("潭州"));
+            var index=0;
+            var i=0;
+            var k=0;
+            index=str.indexOf("潭州",index);
+            k=index;
+            var aa="";
+            var aacon="";
+            while(k!=-1){
+                index=str.indexOf("潭州",index);
+                // alert(index);
+                aacon+=aa.concat(index,",");
+                k=index;
+                i++;
+                index++;
+            }
+            console.log(i-1);
+            // alert(aacon);
+
+            var s="hello";
+            var ss="";
+            for(var i=0;i<5;i++){
+                ss+=s.concat(i);
+            }
+            // alert(ss);
+
+            // index=0;
+            // k=0;
+            // while(str.indexOf("潭州",index)!=-1){
+            //     alert(str.indexOf("潭州",index));
+            //     i++;
+            //     index=str.indexOf("潭州",index)+2;
+            // }
+
+        function $(para){
+            var p =typeof para;
+            if ( p.toUpperCase()== 'STRING' )
+            {
+                return document.getElementById(para);
+            }
+	    }
+        $("list").style.height="100px";
+        $("list").style.width="100px";
+        $("list").style.background="green";
+        </script>
+    </body>
+</html>

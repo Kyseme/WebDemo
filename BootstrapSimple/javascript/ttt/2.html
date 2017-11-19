@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+         </style>
+
+
+    </head>
+    <body>
+            <div id="d">
+                    <div id = "a"></div>
+                    <div id = "b"></div>
+                    <div id = "c"></div>
+                </div>
+        <script>
+       var func = (function (a) {
+           debugger;
+            this.a = a;
+            debugger;
+            return function (a) {
+                a += this.a;
+                return a;
+            }
+        })(function (a, b) {
+            return a;
+        }(1, 2));
+        alert(func(4));
+                
+        </script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+            #list{
+                width: 300px;
+                height:300px;
+                background: pink;
+                padding:50px;
+                position: relative;
+            }
+            #list li:nth-child(1){
+                color:aquamarine;
+            }
+            #list li{
+                list-style: none;
+            }
+            #hide{
+                height:30px;
+                width: 120px;
+                position: absolute;
+                top:45px;
+                left:96px;
+                background: black;
+                display: none;
+            }
+         </style>
+    </head>
+    <body>
+        <div id="list">
+           <ul>
+               <li id="first">hhhh</li>
+               <li>kkk</li>
+               <li>lll</li>
+               <li>bbb</li>
+           </ul>
+           <div id="hide"></div>
+        </div>
+        <script>
+            window.onload=function(){
+                var first=document.getElementById("first");
+                var hide=document.getElementById("hide");
+                first.onmouseover=function(event){
+                    hide.style.display="block";
+                    event.stopPropagation();
+                }
+                hide.onmouseover=function(event){
+                    event.stopPropagation();
+                };
+                document.onmouseover=function(){
+                    hide.style.display="none";
+                }
+            }
+           
+        </script>
+    </body>
+</html>

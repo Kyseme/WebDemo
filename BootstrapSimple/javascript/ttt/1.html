@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+
+            li .on{
+                color:red;
+            }
+            li.on{
+                color:green;
+            }
+         </style>
+
+
+    </head>
+    <body>
+        <!-- <div id="list">
+            <ul>
+                <li><span class="on">f</span></li>
+                <li class="on">h</li>
+                <li>d</li>
+                <li>c</li>
+            </ul>
+        </div> -->
+
+        <div onclick="outSideWork();" id="outSide" style="width:100px; height:100px; background:#000; padding:50px">
+            <div onclick="inSideWork();" id="inSide" style="width:100px; height:100px; background:#CCC"></div>
+        </div>
+        <script>
+            function openWin(url){
+                window.open(url);
+            }
+                function outSideWork() {
+                    alert('My name is outSide,I was working...');
+                }
+
+                function inSideWork() {
+                    alert('My name is inSide,I was working...');
+                }
+
+                // alert(1+undefined);
+                // var doms=document.getElementsByTagName("*")
+                // console.log(doms);
+                var domNodes =  Array.prototype.slice.apply(document.getElementsByTagName("*"));
+                console.log(domNodes);
+                var ss=[1,2,3];
+                localStorage.setItem("name","hhh");
+                alert(localStorage.name);
+                localStorage.removeItem("name");
+                alert(localStorage);
+                // ss.s
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin:0}
+            #list li{
+                width: 20px;
+                height: 20px;
+                display: block;
+                text-decoration: none;
+                background: red;
+                margin-left: 20px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <script>
+            var list=document.getElementById("list");
+            var lis=list.getElementsByTagName("li");//动态读取
+            for(var i=0;i<lis.length;i++){
+            //     // lis[i].index=i;
+            //     //(function(i){})(i)//这个称为即时函数，定义完成就直接执行
+            //     // lis[i].onclick=(function(i){
+            //     //     return function()
+            //     //     {
+            //     //         alert(i)
+            //     //     }
+            //     // })(i)
+                (function (n){
+                    lis[n].onclick = function () {
+                        console.log(i + '-' + n);//i总是等于10 而n则是安装顺序
+                    };
+                }(i));
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>sort</title>
+        <style>
+            *{padding:0;margin: 0};
+         </style>
+    </head>
+    <body>
+        <div id="list">
+            <input type="text" value="3"/>
+            <input type="text" value="10"/>
+            <input type="text" value="8"/>
+            <input type="text" value="17"/>
+            <input type="text" value="7"/>
+        </div>
+        <input type="button" value="test" onclick="sort();"/>
+        <script>
+            var list=document.getElementById("list");
+            // var inputs=list.getElementsByTagName("input");
+            var inputs=list.children;
+            var len=inputs.length;
+            function sort(){
+                var arr=[];
+                for(var i=0;i<len;i++){
+                    arr.push(inputs[i]);
+                }
+                arr.sort(function(a,b){
+                    return b.value-a.value;
+                });
+                // alert(JSON.stringify(arr));
+                debugger;
+                // alert(typeof list.innerHTML);//string
+                list.innerHTML="";
+                debugger;
+                for(var i=0;i<arr.length;i++){
+                    // list.innerHTML+=arr[i].value+",";
+                    list.appendChild(arr[i]);
+                }
+            }
+            
+        </script>
+    </body>
+</html>

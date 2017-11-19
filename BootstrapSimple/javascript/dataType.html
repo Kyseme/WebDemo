@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>dataType</title>
+    </head>
+    <body>
+        <script>
+            //object(array,null,Date,RegExp,json)
+            var a=10.2;//number
+            var b="sunine";//string
+            var c=false;//boolean
+            var e=[];var f=null; //object
+            var d=new Date();//object
+            var j={
+                name:"sun",
+                age:18
+            };
+            //j动态添加
+            j.weight="40kg";
+            j["height"]="160cm";
+            // alert(j.height);
+            // alert(typeof a);
+            // null.index=12;
+            // alert(null.index);
+            function add(){
+                 var sum=12;
+            }
+            // alert(typeof add);
+
+            var str="100";
+            var num=Number(str);
+            // alert(typeof num);
+
+            // alert(Number("hhh"));
+            // alert(typeof s);
+           
+        //    alert(Number(true));
+                // alert(Number(null));
+                // alert(Number(undefined));
+                if(undefined){
+                    // alert(1);
+                }else{
+                    // alert(0);
+                }
+
+                /*parseInt Number parseFloat*/
+                var cc="200￥";
+                var dd="sss300";
+                var ee="100￥100";
+                // console.log(parseInt(cc));
+                // console.log(parseInt(dd));
+                // console.log(parseInt(ee));
+                // console.log(Number(cc));
+
+                var d="10.11元";
+                var dd=10.11;
+                var kk="2/2";// /不计算
+                // alert(parseInt(kk));//2
+                // alert(parseFloat(kk));//2
+                console.log(parseInt(d));//10
+                console.log(Number(d));//NaN
+                console.log(parseFloat(d));//10.11
+
+                console.log(Math.floor(dd));//10
+                console.log(Math.ceil(dd));//11
+                console.log(Math.round(dd));//10
+
+                //判断是否是整数
+                var k=10.2;
+                // if(parseInt(k)==parseFloat(k)){
+                //     alert("int");
+                // }else{
+                //     alert("not int");
+                // }
+
+                //隐式转换
+                /* str=str+number*/
+                var a=10+"2";//102
+                /*str>number str转换成number*/
+                console.log("10">2);//true
+                /*str 比较 个数一个个比较*/
+                // console.log("12">"5");//false
+                // console.log("2000"<"2");//false 长度长
+                // console.log("=====");
+                // console.log("1"===1);
+                // console.log(1===1);
+                // console.log(NaN===NaN);
+                if(NaN){//0 underfined NaN null "" ''
+                    alert(1);
+                }
+
+                /*isNaN() is not a number*/
+                // console.log(NaN===NaN);//false
+                // console.log("NaN");
+                 //isNaN()---根据 Number() 转换以后 再判断是不是数字
+                // console.log(isNaN("123"));//false
+                // console.log(isNaN("ss"));//true
+                // console.log(isNaN(true));//false
+
+                var json={name:"sun",age:18};
+                delete json.name;
+                console.log(json.name+",,"+json.age);//undefined,,18
+                json=null;
+                console.log(json);
+
+                var n=1+undefined;
+                var nn=1+null;
+                alert(Number(null));//0
+	            alert(Number(underfined));//NaN
+                console.log(n+"---"+nn);//NaN---1
+        </script>
+    </body>
+</html>

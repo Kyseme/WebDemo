@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>闭包</title>
+        <style>
+            *{padding:0;margin: 0};
+         </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            // (function(a){//a=10
+            //     alert(a);//10
+            // })(10);
+
+
+            // (function(b){
+            //     b();
+            // })(function(){alert("sunine")})//sunine
+            // var list=document.getElementById("list");
+            //闭包
+            // var f=(function(){
+            //     function add(){
+            //         function init(){
+
+            //         };
+            //         return "sun";
+            //     }
+            //    // return;
+            // })();
+            
+            // alert(f);//underfined
+            // alert(typeof f);//underfined
+
+            /* case 2 即时函数*/
+ //只执行一次，解决全局变量命名冲突问题，具有独立的生命周期，不会被外界所干扰，因此外界无法访问其内部的函数与变量
+            // var f = (function () {
+            //     function add() {
+            //         return function(){
+            //             return 300;
+            //         };
+            //     }
+            //     return {name:add}  
+            //  })();
+            
+            // alert(f.name()());//300
+
+            /*case two*/
+            // (function(callback){
+            //     p={name:"cc"};
+            //     callback(p);
+            //     alert(p.name);//"aa"
+            // })(function(obj){//var obj=p; obj指向了p
+            //     obj.name="aa";//p.name="aa";
+            //     obj=null;
+            //     obj={name:"bb"};//obj指向了{name:"bb"}
+            //     // alert(obj.name);//bb
+
+
+            // });
+
+            // var a=10;
+            // function f(){
+            //     var a=1;
+            //     function test(){
+            //         return a;//1
+            //     }
+            //     test();
+            // }
+            // f();
+
+
+            /*Jquery 链式调用*/
+           // json中关键字this的使用（this就是当前调用此方法的对象）
+            // var name="sun";
+            // var json={
+            //     name:"sunine",
+            //     age:18,
+            //     say:function(){
+            //         alert(this.name+"==="+this.age);
+            //         // return ;
+            //     }
+            // }
+            
+            // alert(json.say());//sunine===18 underfined
+
+ //this是在运行时才确定的，
+ //指向当前执行的上下文,匿名函数的执行环境具有全局性， 因此匿名函数的this指向window
+  //匿名函数没有和任何对象绑定,则默认绑定到全局对象,则this指向window
+            // var name="sun";
+            // var json={
+            //     name:"sunine",
+            //     age:18,
+            //     say:function(){
+            //       return function(){
+            //           return this.name;
+            //       }
+            //     }
+            // }
+            
+            // alert(json.say()());//sun
+
+            var fn=function(id){
+                var dom=document.getElementById("list");
+                var json={
+                    html:function(text){
+                        dom.innerHTML=text;
+                        return this;
+                    },
+                    css:function(key,value){
+                        dom.style[key]=value;
+                        return this;
+                    }
+                };
+                return json;
+            }
+            fn("list").html("hhhh").css("border","1px solid green").css("height","100px").css("width","100px");
+        </script>
+    </body>
+</html>
