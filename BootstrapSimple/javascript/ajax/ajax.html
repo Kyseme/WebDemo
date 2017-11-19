@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list">
+            this is a button
+        </div>
+    </body>
+    <script>
+        window.onload = function () {
+            //IE6 ActiveXObject
+            var btn = document.getElementById("list");
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                //兼容IE6的ajax
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            //请求方式  请求文档  是否异步
+            /*
+                true:同步
+                    非阻塞-->同时执行，不会阻塞
+                false：同步 
+                    阻塞-->先执行，会阻塞后面代码的执行
+            */
+            xhr.open("get", "one.txt", true);
+            //发送异步请求
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                //http状态码
+                if (xhr.readyState == 4 && xhr.status==200) {
+                    /*
+                        0: 请求未初始化
+                        1: 服务器连接已建立，还没发送
+                        2: 请求已接收
+                        3: 请求处理中
+                        4: 请求已完成，且响应已就绪
+                        当 readyState 等于 4 且状态为 200 时，表示响应已就绪
+
+                    */
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</html>
