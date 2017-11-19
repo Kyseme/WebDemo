@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0};
+            html,body{height: 100%;width:100%;}
+            #list{
+                width: 70%;
+                margin:50px auto 20px;;
+                border:3px dashed lightpink;
+                padding:8px;
+            }
+
+            p{text-align: center;}
+            p input{height:30px;outline:none}
+
+         </style>
+    </head>
+    <body>
+        <div id="list">
+            长期以来，我们以分数为核心的录取制度，最大的优点是分数面前人人平等，但同时，以分数评价人的不足也非常明显。分数评价人，不全面、不科学是显而易见的，也是高考长期被诟病的地方。此次高考改革明确提出了综合评价多元录取的指导方向，综合素质评价已经全面启动，并作为高考录取中的两依据（高考选考分数）一参考（综合素质评价）。综合素质评价虽然目前还只是作为录取的参考，而不是核心依据，但无论如何，已经开始进入录取评价体系，在自主招生上也已经产生一定的意义。这一点也是很多人期望的，但也是难度所在。对于一个人的评价，是复杂的，除了哪些指标可以作为衡量依据可能存在争议，还将面临诚信的挑战。
+        </div>
+        <p>
+            <input id="txt" placeholder="请输入...."/>
+            <input id ="btn" type="button" value="查询"/>
+        </p>
+        <script>
+            window.onload=function(){
+                var txt=document.getElementById("txt");
+                var btn=document.getElementById("btn");
+                var html=list.innerHTML;
+                btn.onclick=function(){
+                    var key=txt.value;
+                    search(html,key);
+                };
+                txt.onfocus=function(){
+                document.onkeyup=function(){
+                    var key=txt.value;
+                    search(html,key);
+                };
+            };
+            
+          
+               
+            }
+            function search(html,key){
+                // var aa="haseresbddes";
+                // console.log(aa.split("e"));
+                // var key=txt.value;
+                if(key){//underfined null 0 "" '' NaN
+                    var arr=html.split(key);
+                    // console.log(arr);
+                    var newArr=arr.join("<span style='color:red;'>"+key+"</span>");
+                    // var newArr=arr.join("<span style='color:yellow;'>"+key+"</span>");
+                    
+                    console.log();
+                    list.innerHTML=newArr;
+                }else{
+                     list.innerHTML=html;
+                }
+              
+            }
+        </script>
+    </body>
+</html>

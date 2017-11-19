@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>scroll</title>
+        <style>
+            *{padding:0;margin: 0}
+            #box{
+                width: 80px;
+                height: 1000px;
+                background: pink;
+                margin:50px auto;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="box" class="hello" sun="Sun">
+            click me!
+       </div>
+    </body>
+    <script>
+        window.onload=function(){
+            var box=document.getElementById("box");
+           box.onclick=function(){
+                 alert(document.documentElement.scrollTop||document.body.scrollTop);//IE
+                // alert(document.body.scrollTop);//chrome
+           }
+           //scrollTop文档卷上去的内容
+           //兼容IE和chrome
+           function scroll(){
+               // false 0 '' "" null underfined NaN
+            //    var st=document.documentElement.scrollTop;
+               st=document.documentElement.scrollTop||document.body.scrollTop
+           }
+        }
+    </script>
+
+</html>

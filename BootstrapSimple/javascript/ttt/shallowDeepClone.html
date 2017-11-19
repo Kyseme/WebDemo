@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            function shallowClone(copyObj){
+                var obj={};
+                for(var i in copyObj){
+                    obj[i]=copyObj[i];
+                    // console.log(i);
+                    // console.log("-----")
+                    // console.log(copyObj[i]);
+                }
+                return obj;
+            }
+
+                var x = {
+                    a: 1,
+                    b: { f: { g: 1 } },
+                    c: [1, 2, 3]
+                };
+                var y=shallowClone(x);
+                // y.c[1]='l';
+                // x.a="kk";
+                console.log(y);
+                console.log(x);
+                alert(x===y);
+
+                //Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象
+                // var y = Object.assign({}, x);
+                // x.a="sunine";
+                // console.log(y);
+
+                //深拷贝：obj2复制obj1的对象内容，在我对obj2进行修改时，不影响obj1
+                // var y={...x};
+                // alert(y===x);//false 深拷贝
+                // x.a="sunine";
+                // console.log(y);
+                // var source = { name:"source", child:{ name:"child" } } 
+                // var target = JSON.parse(JSON.stringify(source));
+                // source.child.name="kkk";
+                // console.log(target);
+
+                    // let obj1 = {
+                    //     a: '1',
+                    //     b: '2',
+                    //     c: function func() { }
+                    // }
+                    // let obj4 = JSON.parse(JSON.stringify(obj1))
+                    // console.log(obj4) //{ a: '1', b: '2' } 好像漏了些什么
+        
+            let obj1 = {
+                a: '1',
+                b: '2',
+                c: {
+                    d: '3'
+                },
+                d: function aa() { }
+            }
+            function deepCopy(obj) {
+                let temp = obj.constructor === Array ? [] : {}
+                for (let val in obj) {
+                    temp[val] = typeof obj[val] == 'object' ? deepCopy(obj[val]) : obj[val]
+                }
+                return temp
+            }
+            console.log(deepCopy(obj1)) //{ a: '1', b: '2', c: { d: '3' }, d: [Function: aa] }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>parent</title>
+        <style>
+            /* *{padding:0;margin: 0} */
+            #box{
+               width: 300px;
+               background-color: red;
+               padding: 50px;
+            }
+            #out{
+                width: 200px;
+                background-color: lightblue;
+                padding: 50px;
+                position: relative;
+            }
+            #inline{
+                width: 100px;
+                background-color: lightcoral;
+                padding: 50px;
+                border:3px solid pink;
+                /* position: relative; */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+           <div id="out">
+               <div id="inline">
+
+               </div>
+           </div>
+        </div>
+    </body>
+    <script>
+        /*
+        offsetLeft:chrome 元素到html的距离
+            如果父级元素有定位，则到父级元素的定位
+        */
+        window.onload=function(){
+            var inline=document.getElementById("inline");
+            // alert(inline.offsetLeft);//108
+            // alert(inline.offsetLeft);//50  有定位
+            // alert(inline.offsetHeight);//106 content+padding+border
+            alert(inline.offsetTop);//50
+            // alert(inline.offsetWidth);//206 content+padding+border
+        }
+    </script>
+</html>

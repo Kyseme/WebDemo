@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>parent</title>
+        <style>
+            *{padding:0;margin: 0}
+            #box{
+                position:relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div>
+                <ul id="list">
+                    <li id="li1">one</li>
+                    <li>two</li>
+                    <li>three</li>
+                    <li>four</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload=function(){
+            var ulDom=document.getElementById("list");
+            // console.log(ulDom.parentNode);//[object HTMLDivElement]
+            // console.log(ulDom.parentElement);//[object HTMLDivElement]
+            
+            //需求叫id=li1的颜色不变，其它li元素颜色变为red sibings()方法
+            // function sibings(obj){
+            //     var liDoms=obj.parentNode.children;
+            //     for(var i=0;i<liDoms.length;i++){
+            //         if(liDoms[i]!=obj){
+            //             liDoms[i].style.color="red";
+            //         }
+            //     }
+            // }
+            // var liDom=document.getElementById("li1");
+            // sibings(liDom);
+
+            function sibings(obj,callback){
+                var liDoms=obj.parentNode.children;
+                for(var i=0;i<liDoms.length;i++){
+                    if(liDoms[i]!=obj){
+                        // callback.call(liDoms[i],10,20);
+                        callback.apply(liDoms[i],[20,30]);
+                    }
+                }
+            }
+            var liDom=document.getElementById("li1");
+            // sibings(liDom,function(a,b){
+            //     this.style.color="green";
+            //     console.log(a+b);//50
+            // });
+
+            /*offsetParent 在元素没有定位下--得到body    有定位--第一个定位父元素*/
+            //offsetParent  是一个只读属性，返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null
+            //alert(ulDom.offsetParent);//[object HTMLBodyElement]
+            console.log(ulDom.offsetParent); //定位 div id="box"
+        }
+    </script>
+</html>

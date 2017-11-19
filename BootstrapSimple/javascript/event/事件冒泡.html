@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+            #list{
+                width: 300px;
+                height:300px;
+                background: pink;
+                padding:50px;
+            }
+            #child{
+                width: 200px;
+                height:200px;
+                background: lightcyan;
+                padding:50px;
+            }
+            #son{
+                width: 100px;
+                height:100px;
+                background: lawngreen;
+                padding:50px;
+            }
+         </style>
+    </head>
+    <body>
+        <div id="list">
+            <div id="child">
+                <div id="son">
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload=function(){
+                //当一个元素在触发一个事件的时候，这个事件会传递给父元素，一直传到window就结束了
+
+                var list=document.getElementById("list");
+                var child=document.getElementById("child");
+                var son=document.getElementById("son");
+
+                list.onclick=fn;
+                child.onclick=fn;
+                son.onclick=fn;
+
+                function fn(event){
+                    alert(this.id);
+                    event.cancelBubble=true;
+                   // w3c 的方法是 e.stopPropagation()
+                  //  IE 则是使用 e.cancelBubble = true
+                }
+                
+            }
+           
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0};
+         </style>
+    </head>
+    <body>
+        <span id="span">请选择</span><input type="button" id="btn" value="全选"/>
+        <div id="list">
+            <label><input type="checkbox"/>hhh</label>
+            <label><input type="checkbox"/>lll</label>
+            <label><input type="checkbox"/>nnn</label>
+            <label><input type="checkbox"/>mmm</label>
+            <label><input type="checkbox"/>sss</label>
+            <label><input type="checkbox"/>yyy</label>
+            <label><input type="checkbox"/>uuu</label>
+        </div>
+        <script>
+            window.onload=function(){
+                var list=document.getElementById("list");
+                var checks=list.getElementsByTagName("input");
+                var btn=document.getElementById("btn");
+                var span=document.getElementById("span");
+                var flag=false;
+                var len=checks.length;
+                var che=0;
+                btn.onclick=function(){
+                    // if(flag){
+                    //     for(var i=0;i<len;i++){
+                    //         checks[i].checked=false;
+                    //     }
+                    //     btn.value="全选";
+                    //     che=len;
+                    //     flag=false;
+                    // }else{
+                    //     for(var i=0;i<len;i++){
+                    //         checks[i].checked=true;
+                    //     }
+                    //     btn.value="全不选";
+                    //     che=0;
+                    //     flag=true;
+                    // }
+                    var kk=checklen(checks);
+                    if(kk==0){
+                        for(var i=0;i<len;i++){
+                            checks[i].checked=true;
+                        }
+                        btn.value="全不选";
+                    }else if(kk==len){
+                        for(var i=0;i<len;i++){
+                            checks[i].checked=false;
+                        }
+                        btn.value="全选";
+                    }else{
+                        btn.value="全选";
+                        for(var i=0;i<len;i++){
+                            checks[i].checked=true;
+                        }
+                        btn.value="全不选";
+                    }
+                   
+                }
+
+                function checklen(params){
+                    var len = params.length;
+                    var k=0;
+                    for(var i=0;i<len;i++){
+                        if(params[i].checked){
+                            k++;
+                        }
+                    }
+                    return k;
+                }
+            }
+        </script>
+    </body>
+</html>

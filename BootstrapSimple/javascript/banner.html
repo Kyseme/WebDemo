@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin:0}
+            #banner{
+                width:430px;height:430px;
+                border: 3px solid lemonchiffon;
+                margin: 50px auto 10px;
+                position: relative;
+            }
+            #banner a{
+                text-decoration: none;
+                width: 36px;
+                height: 36px;
+                display: block;
+                background: rgba(214, 159, 159, 0.7);
+                text-align: center;
+                line-height: 36px;
+                font-size: 20px;
+                position: absolute;
+                top:50%;
+                color:rgb(144, 197, 243);
+                margin-top:-18px;
+                visibility: hidden;
+            }
+            #banner #left{
+                left:0px;
+                /* float: left; */
+            }
+            #banner #right{
+                right:0px;
+                /* float: right; */
+            }
+            #banner img{
+                width:430px;height:430px;
+            }
+            #banner:hover a{
+                visibility: visible;
+            }
+            p{
+                text-align: center;
+            }
+            #list{
+                position: absolute; 
+                bottom: 20px;
+                /* border:2px solid red; */
+                width:70px;
+                height: 10px;
+                left:50%;margin-left:-30px;
+            }
+           #list li{
+                list-style: none;
+                width:10px;height: 10px;
+                margin-right: 4px;
+                background: rgba(31, 228, 235, 0.8);
+                float:left;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            #list .on{
+               background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="banner">
+            <img src="img/1.jpg">
+            <a id="left" href="javascript:void(0);">&lt;</a>
+            <a id="right" href="javascript:void(0);">&gt;</a>
+            <ul id="list">
+                <li class="on"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <p>第<span id="span">1</span>张</p>
+        <script>
+            window.onload=function(){
+                var oLeft=document.getElementById("left");
+                var banner=document.getElementById("banner");
+                var oRight=document.getElementById("right");
+                var img=banner.getElementsByTagName("img");
+                var span=document.getElementById("span");
+                var oList=document.getElementById("list");
+                var oLi=oList.getElementsByTagName("li");
+                var num=1;
+                oLeft.onclick=function(){ 
+                    num--;
+                    if(num==0){
+                        num=5;
+                    }
+                    img[0].src="img/"+num+".jpg"; 
+                    span.innerHTML=num;
+                    imgTab();
+                }
+
+                oRight.onclick=function(){
+                    num++;
+                    // num=num%5;
+                    if(num==0){
+                        num=5;
+                    }
+                    if(num>5){
+                        num=1;
+                    }
+                    img[0].src="img/"+num+".jpg";
+                    // span.innerHTML=i;
+                    span.innerText=num;
+                    imgTab();
+                };
+
+                for(var i=0;i<oLi.length;i++){
+                    //object 动态绑定属性
+                    oLi[i].index=i;
+                    oLi[i].onclick=function(){
+                        num=this.index+1;
+                        console.log(num);
+                        img[0].src="img/"+num+".jpg";
+                        span.innerText=num;
+                        // oLi[this.index].className="on";
+                       imgTab();
+                    }    
+                };
+
+                function imgTab(){
+                    for(var j=0;j<oLi.length;j++){
+                        if(j==num-1){
+                            oLi[j].className="on";
+                         }else{
+                            oLi[j].className="";
+                        }
+                     }
+                }
+            }
+        </script>
+    </body>
+</html>

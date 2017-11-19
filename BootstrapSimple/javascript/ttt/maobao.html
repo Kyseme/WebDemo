@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>maobao</title>
+        <style>
+            *{padding:0;margin: 0}
+
+            li .on{
+                color:red;
+            }
+            li.on{
+                color:green;
+            }
+         </style>
+
+
+    </head>
+    <body>
+        <div id="list">
+            <ul>
+                <li><span class="on">f</span></li>
+                <li class="on">h</li>
+                <li>d</li>
+                <li>c</li>
+            </ul>
+        </div>
+        <script>
+            var a=[3,45,2,1,7,10];
+            function mao(arr){
+                for(var i=0;i<arr.lenght;i++){//数组长度
+                    for(var j=0;j<arr.lenght-1-i;j++){//循环次数
+                        if(arr[j]>arr[j+1]){
+                           var temp=arr[j];
+                           arr[j]=arr[j+1];
+                           arr[j+1]=temp; 
+                        }
+                    }
+                };
+            }
+         //   mao(a);
+         debugger;
+         console.log(Object.prototype.toString.call(null));
+         debugger;
+         console.log(Object.prototype.toString.call(a));
+        // alert(Object.prototype.toString);
+        </script>
+    </body>
+</html>

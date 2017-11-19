@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+                *{padding:0;margin: 0};
+            </style>
+    </head>
+    <body>
+        <div id="list">
+            <input type="text" placeholder="请输入请求号" id="txt" maxlength="11" minlength="5"/>
+            <input type="button" id="btn" value="验证"/>
+        </div>
+
+        <script>
+            //0-9  48--57
+            var qq=document.getElementById("txt");
+            var btn=document.getElementById("btn");
+            qq.focus();
+            btn.onclick=function(){
+                var str=qq.value;
+                var len=str.length;
+                if(str==""){
+                    alert("请输入qq号码！");
+                    qq.focus();
+                    return;
+                }if(str.charCodeAt()==48){
+                    alert("第一位不能为0");
+                    return ;
+                }if(len<5 || len>11){
+                    alert("字符串长度为5-11");
+                    qq.focus();
+                    return;
+                }else{
+                    for(var i=0;i<str.length;i++){
+                        var j=str.charCodeAt(i);
+                        if(j<48 || j>57){
+                            alert("验证失败");
+                            // break;
+                            qq.focus();
+                            return;
+                        }
+                    }
+                }
+                alert("验证成功");
+                
+            };
+        </script>
+    </body>
+</html>

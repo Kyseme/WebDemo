@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list" class="box" sun="sunine">
+        </div>
+    </body>
+    <script>
+        var list=document.getElementById("list");
+        //获取list对象的属性
+        // console.log(list.attributes);//0:id 1:class 2:sun
+        //获取属性集合的第一项
+        // console.log(list.attributes[0])//id=list
+
+        //获取属性集合项的属性key
+        // console.log(list.attributes[0].name)//id
+        // console.log(list.attributes[2].name)//sun
+
+        //获取属性的value
+        // console.log(list.id);//list
+        // console.log(list.className);//box
+
+        /* . []可以获取属性，但是不能修改我们自定义的属性*/
+        console.log(list.getAttribute("id"));//list
+        //设置属性
+        list.setAttribute("sun","hello");
+
+        //移除属性
+        list.removeAttribute("sun");
+    </script>
+</html>

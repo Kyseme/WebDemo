@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>scroll</title>
+        <style>
+            *{padding:0;margin: 0}
+            #box{
+                width: 100px;
+                height: 100px;
+                background: pink;
+                margin:50px auto;
+                padding: 20px;
+            }
+            #div1{
+                background: beige;
+                padding:50px;
+                width: 300px;
+                margin:50px auto;
+            }
+            #div2{
+                background:lightcoral;
+                padding:50px;
+                width: 200px;
+                border:3px solid brown;
+                position: relative;
+            }
+            #div3{
+                background: lightgreen;
+                padding:50px;
+                width: 100px;
+                border:3px solid red;
+                /* position: relative; */
+            }
+        </style>
+    </head>
+    <body>
+       <div id="div1"> 
+           <div id="div2">
+               <div id="div3"></div>
+           </div>
+       </div>
+    </body>
+    <script>
+        window.onload=function(){
+            /*
+            offset:相对于其父级元素offsetParent的距离
+                无定位：元素相对于body的偏移量
+                有定位：相对于其父级元素的定位
+            属性值：offsetLeft、offsetTop、offsetHeight、offsetWidth
+            */
+           
+            var div3=document.getElementById("div3");
+
+            /*无定位*/
+            console.log(div3.offsetTop+","+div3.offsetLeft+","+div3.offsetHeight+","+div3.offsetWidth+","+div3.offsetParent.tagName);//153,543,106,206,BODY
+        
+            /*div3 postion:relative   div2 postionn:relative*/
+            console.log(div3.offsetTop+","+div3.offsetLeft+","+div3.offsetHeight+","+div3.offsetWidth+","+div3.offsetParent.id);//50,50,106,206,div2
+
+            console.log(document.body.offsetParent);//null
+        }
+    </script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0};
+        </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            var json={
+                name:"sunine",
+                age:18,
+                say:function(){alert("good");return;},
+                obj:{
+                    name:"tom",
+                    age:10,
+                    num:[1,2,3]
+                },
+                "a,b":"hhhh"
+
+            };
+            // alert(typeof json);
+            // console.log(json);
+            // alert(json.say());//good underfined
+            console.log(json.name);
+            // alert(json["a,b"]);
+            // json.say();
+
+            // for(var key in json){
+            //    console.log(typeof key);//string
+            //    console.log(json[key]);
+            //    console.log(typeof json[key]);
+               
+            // }
+
+            // for(var key in document){
+            //     console.log(key+"==="+document[key]);
+            // }
+        </script>
+    </body>
+</html>

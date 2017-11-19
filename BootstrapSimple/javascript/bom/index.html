@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>bom</title>
+        <style>
+            *{padding:0;margin: 0}
+            #box{
+                width: 80px;
+                height: 30px;
+                background: pink;
+                margin:50px auto;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="box" class="hello" sun="Sun">
+            click me!
+       </div>
+       <a href="#name">there</a>
+       <div style="height:500px;width:200px">
+            <a name="name">hhhh</a>
+       </div>
+    </body>
+    <script>
+        window.onload=function(){
+           //BOM browser object model
+           /*
+            window.open(href,tagert) //默认在新窗口打开链接
+            window.open()
+            参数1：地址路径，不写打开空白页面
+            参数2：打开页面的方式
+            _blank	(默认)在新窗口中打开被链接文档
+            _self	在相同的框架中打开被链接文档
+            _parent	在父框架集中打开被链接文档
+            _top	在整个窗口中打开被链接文档
+
+            window.navigator.userAgent//获取浏览器的信息
+
+            window.location  //地址信息 ['href'] ['search'] ['hash']
+
+            //页面跳转
+            window.location.href="http://www.baidu.com";
+           */
+           var box=document.getElementById("box");
+           box.onclick=function(){
+            //    window.open("http://www.baidu.com","_top");
+
+
+            // var newWindow=open("http://www.baidu.com");
+            //设置窗口的title和文档内容
+            // newWindow.document.title="sunine";
+            // newWindow.document.body.innerHTML="hhhhh";
+
+            //关闭窗口
+            // window.close();
+            //userAgent 	返回由客户机发送服务器的 user-agent 头部的值。
+            console.log(window.navigator.userAgent);
+            
+            console.log(typeof window.location);//object
+            // window.location.href="http://www.baidu.com";
+            // window.open("scroll.html");
+            alert(window.location.hash);
+           }
+        }
+    </script>
+
+</html>

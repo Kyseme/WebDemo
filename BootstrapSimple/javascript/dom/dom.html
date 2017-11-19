@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>dom</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="box"><!--hhhh-->
+            <ul id="list">
+                <li>one</li>
+                <li>two</li>
+                <li>three</li>
+            </ul>
+            hello
+            <p>kkk</p>
+        </div>
+        <div id="wrap"><ul><li>1</li></ul></div>
+    </body>
+    <script>
+        /*
+        dom: Document Object Model 文档对象模型
+        文档：html页面
+        文档对象：html里面的元素
+        文档对象模型：定义   目的：为了让js更好的操作dom节点
+            nodeType
+        元素	1
+        属性	2
+        文本	3
+        注释	8
+        文档	9   //document.nodeType
+
+        注意：
+            childNodes
+                其它浏览器:元素节点+其它节点(dom节点)
+                ie6,7,8:元素节点(如何有文字当做文本节点)
+
+            children 获取元素节点
+
+            firstChild
+                -chrome 和childNodes获取的一样
+
+        */
+        window.onload=function(){
+            var boxDoms=document.getElementById("box");
+            // console.log(boxDoms.children);//ul#list
+            // alert(boxDoms.firstChild.nodeType);//8  0:comment
+            //空格会处理成text节点
+            // console.log(boxDoms.childNodes);//0:text 1:ul#list 2:text
+        //    alert(boxDoms.childNodes[0].nodeType+","+boxDoms.childNodes[1].nodeType);//3,1
+            // alert(document.nodeType);//9
+           console.log( boxDoms.nextSibling);
+        //    boxDoms.nextSibling.style.color="red";
+            boxDoms.nextElementSibling.style.color="red";
+            var wrapDoms=document.getElementById("wrap");
+            // console.log(wrapDoms.childNodes);//0:ul
+
+            //兼容写法
+            if(boxDoms.nextElementSibling){
+                boxDoms.nextElementSibling.style.color="green";
+            }else{//ie 6,7,8
+            if( boxDoms.nextSibling && boxDoms.nextSibling.nodeType==1){
+                boxDoms.nextSibling.style.color="green";
+            }
+                
+            }
+        }
+    </script>
+
+</html>

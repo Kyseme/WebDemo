@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="list">
+        </div>
+        <script>
+            var list=document.getElementById("list");
+            var arr=[];
+            arr.push("你好,欢迎大家！");
+            arr.push("欢迎来到华中科技大学管理学院!");
+            var index=0;
+            var pos=1;
+            var timer=null;
+            var arrLen=arr.length;//记录数组的长度
+            var p="";
+            var row=0;//记录行数
+            function printText(){
+                var rowLen=arr[index].length;
+                if(row<index){
+                    p=p+arr[row++]+"<br/>";
+                }
+               
+                list.innerHTML=p+arr[index].substring(0,pos);
+                if(pos==rowLen){
+                    if(index<(arrLen-1)){
+                        index++;
+                        pos=1;
+                        timer=setTimeout(printText, 100);
+                    }else{
+                        clearTimeout(timer);
+                    }
+                }else{
+                   pos++;
+                   timer=setTimeout(printText,100);
+                }
+            }
+            printText();
+        </script>
+    </body>
+</html>

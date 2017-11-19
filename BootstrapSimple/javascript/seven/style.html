@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>style</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+        
+        .on {
+            height: 200px;
+            width: 200px;
+            border: 3px solid blueviolet;
+            background: #5df7ff;
+        }
+        #list {
+            height: 200px;
+            width: 200px;
+            border: 3px solid blueviolet;
+            background: #5df7ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list" class="on">
+    </div>
+    <script>
+        window.onload = function() {
+            var list = document.getElementById("list");
+
+
+            //     /*第一种*/
+            //     // list.style.height="100px";
+            //     // list.style.width="100px";
+            //     // list.style.border="2px solid pink";
+
+            //第二种
+//            list.className = "on";
+
+            //第三种
+//            list.style.cssText = "height:100px;border:1px solid yellow;border-radius:5px;margin:50px auto;";
+
+//            alert(list.style.height);//200px
+
+//            alert(getComputedStyle(list));
+          //  list.currentStyle --->只兼容IE678
+
+            console.log(getStyle(list,"width"));
+            console.log(getStyle(list," backgroundColor"));
+            function getStyle(obj,attr){
+//                attr=attr.trim();
+                attr=attr.split(" ");//
+//                console.log(attr);//["", "backgroundColor"]
+                attr=attr.join("");
+//                console.log(attr);//backgroundColor
+                if(obj.currentStyle){
+                    return obj.currentStyle[attr];
+                }else{
+                    return getComputedStyle(list)[attr];
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
