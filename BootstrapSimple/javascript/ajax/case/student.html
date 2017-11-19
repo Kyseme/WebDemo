@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>index</title>
+        <style>
+            *{padding:0;margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <input id="btn" type="button" value="点我"/>
+    </body>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById("box");
+            var oBtn=document.getElementById("btn");
+            setInterval(function(){
+                ajax("get","student.php",true,function(res){
+                    res=JSON.parse(res);
+                    var s="";
+                    for(var i=0;i<res.length;i++){
+                        s=s+"<li>姓名是:"+res[i].name+"，年龄是:"+res[i].age+"</li>";
+                    }
+                    oBox.innerHTML=s;
+                });
+                
+            },3000)
+            oBtn.onclick=function(){
+                // var xhr=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+                // xhr.open("get","student.php",true);
+                // xhr.send();
+                // xhr.onreadystatechange=function(){
+                //     if(xhr.readyState==4 && xhr.status==200){
+                //         //xhr.responseText 是字符串类型
+                //         // console.log(xhr.responseText);
+                //         //将字符串转化为对象
+                //         console.log(JSON.parse(xhr.responseText));
+                //         var res=eval("("+xhr.responseText+")");
+                //         // console.log(JSON.stringify(xhr.responseText));
+                //         // var str=JSON.stringify(xhr.responseText);
+                //         // var str1=str.split('\\').join('');
+                //         // console.log(str1);
+                       
+                //     }
+                // }
+            };
+
+            function ajax(method,url,asyn,fn){
+                var xhr=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+                xhr.open(method,url,asyn);
+                xhr.send();
+                xhr.onreadystatechange=function(){
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        if (fn) {
+                            fn(xhr.responseText);
+                        }
+                    }
+                }
+               
+            }
+        }
+    </script>
+</html>
